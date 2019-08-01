@@ -1,0 +1,124 @@
+@font-face{
+  src: url(../fonts/digital7.ttf);
+  font-family: DigitalDisplay;
+}
+
+@font-face{
+  src: url(../fonts/Baron\ Neue\ Bold\ Italic.otf);
+  font-family: General;
+}
+
+.grid {
+	display: grid;
+}
+
+/* 100px é o valor total, ignora conteúdo, margem e etc. Respeita apenas o min-width do item.*/
+.grid-template-columns-1 {
+	grid-template-columns: 100px 100px 100px 100px;
+}
+
+td{
+  background-color: #070;
+}
+
+table.timer{
+  text-align: center;
+  align-content: center;
+	position: absolute;
+	transform: translate(-50%, -50%);
+  top: 50%;
+  left: 50%;
+	width: 98%; 
+	height: 98%;
+  border-radius: 10px;
+  background-color: black;
+}
+
+div{
+  align-content: center;
+  text-align: center;
+  width: 100%;
+  display:table-row;
+  /* margin: 1%; */
+  background: #000;
+}
+
+div.content
+{
+    height:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#label{
+  font-family: "DigitalDisplay";
+  font-size: 800%;
+  color: #f00;
+}
+
+body{
+  margin :0;
+  padding: 0%;
+  height:98%;
+  width:98%;
+}
+
+html{
+  height:100%;
+  width:100%;
+}
+
+html,body{
+  background: black;
+  margin: 0;
+  display:table; 
+}
+
+.block{
+  position: absolute; 
+  height: 49%; width: 50%;
+}
+
+
+h1{
+  color: #fff;
+  font-size: 300%;
+  font-family: "General";
+  margin: 0;
+}
+
+button {
+  padding: 5px 10px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #000;
+  border: none;
+  font-family: "General";
+  font-size: 5vw;
+  margin : 1%;
+}
+
+button.play, button.pause{
+  background-color: #0f0;
+  box-shadow: 0 9px #070;
+}
+
+button.time{
+  background-color: #ff0;
+  box-shadow: 0 9px #770;
+}
+
+button.stop{
+  background-color: #f00;
+  box-shadow: 0 9px #700;
+}
+
+button:hover {background-color: #999}
+
+button:active {
+  background-color: #555;
+  box-shadow: 0 5px #333;
+  transform: translateY(4px);
+}
