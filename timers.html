@@ -1,0 +1,109 @@
+<html>
+<head>
+<style>
+        table, th, td 
+        {
+            margin:10px 0;
+            border:solid 1px #333;
+            padding:2px 4px;
+            font:15px Verdana;
+        }
+        th {
+            font-weight:bold;
+        }
+		
+#loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid blue;
+  border-bottom: 16px solid blue;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+  visibility:hidden;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+		
+    </style>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script>
+  
+  var script_url = "https://script.google.com/macros/s/AKfycbykshSPr4QZBZiVENQzSGqOb66tYQwjHt8qBwiYFBUuAAkdMnI/exec";
+  
+  // Make an AJAX call to Google Script
+  function insert_value() {
+    $("#re").css("visibility","hidden");
+    document.getElementById("loader").style.visibility = "visible";
+    $('#mySpinner').addClass('spinner');
+
+    var game    =	$("#game").val();
+    var player  =	$("#player").val();
+    var event   =   $("#event").val();
+
+    var url = script_url+"?callback=ctrlq&game="+game+"&player="+player+"&event="+event+"&action=insert&id=teste";
+    var request = jQuery.ajax({
+      crossDomain: true,
+      url: url ,
+      method: "GET",
+      dataType: "jsonp"
+    });
+  }
+  
+  // print the returned data
+  function ctrlq(e) {
+  
+	$("#re").html(e.result);
+	$("#re").css("visibility","visible");
+    document.getElementById("loader").style.visibility = "hidden";
+	//read_value();
+  }
+  
+  </script>
+
+</head>
+<body>
+<div align="center">
+<h1>CRUD OPERATION ON GOOGLE SPREAD SHEET, WEB APPLICATION USING GOOGLE APP SCRIPT .</h1> 
+<p>This is simple application, You can develop your own logic based on your requiremnets.<p>
+<p>Be careful with the parameters you are sending, it should match the parameters that are recived in google app script.</p>
+
+
+<form >
+Game
+<input type = "text" name ="game" id="game">
+Player
+<input type = "text" name ="player" id="player">
+Event
+<input type = "text" name ="event" id="event">
+
+</form>
+
+<div id="loader"></div>
+
+<p id="re"></p>
+
+<input type = "button"  id = "b1" onClick="insert_value()" value = "Insert"></input>
+<input type="button" onclick="read_value()" value="Read" />
+<input type="button" onclick="update_value()" value="Update" />
+<input type="button" onclick="delete_value()" value="Delete" />
+<a href="https://docs.google.com/spreadsheets/d/1FvKDuZJuBxifLy5pp5EjljJpoxukUI88K9rn8Z2Q76o/edit" target="_blank">Click here to open Spread Sheet </a>
+<div id="showData"></div>
+</div>
+</body>
+<div align="center">
+<p>ANDROID LABS 2017 | All Rights Reserved</p>
+</div>
+<html>
+
+
